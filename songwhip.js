@@ -12,22 +12,15 @@
 		return;
 	}
 
-	console.log("loaded sw");
-
 	/**
 	* @param {string[]} uris
 	*/
 	async function getSongwhip(uris) {
 		const SW_URL = "https://songwhip.com";
 		const uri = uris[0];
+		const data = await Spicetify.CosmosAsync.post(SW_URL, JSON.stringify({ url: uri }));
 
-		fetch(SW_URL, {
-			method: 'POST',
-			body: JSON.stringify({ url: uri }),
-		})
-		.then(res => res.json())
-		.then(data => console.log(data))
-		.catch(error => console.log(error));
+		console.log("Got " + data.url);
 	}
 
 	/**
