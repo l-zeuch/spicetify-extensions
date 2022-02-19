@@ -1,8 +1,8 @@
 [
 	{
 		"name": "Spicetify-Songwhip",
-		"description": "A spicetify extension for better music sharing.",
-		"preview": "songwhip-demo.png",
+		"description": "A Spicetify extension to extend the \"share\" capabilities by using Songwhip.",
+		"preview": "https://songwhip.com/apple-touch-icon.png",
 		"main": "songwhip.js",
 		"readme": "README.md"
 	}
