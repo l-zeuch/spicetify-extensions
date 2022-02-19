@@ -1,49 +1,36 @@
-# Spicetify-Songwhip
+# Spicetify-Extensions
 
-[Spicetify](https://github.com/khanhas/spicetify-cli) extension to extend the "share" capabilities by using
-[Songwhip](https://songwhip.com).
+A collection of [Spicetify](https://github.com/khanhas/spicetify-cli) extensions I've written.
 
-## What Is Songwhip?
+## Contents
 
-From <https://songwhip.com/about>:
+*This is by no means an exhaustive list, nor is it meant to be. View the individual folders for details.*
 
-> Songwhip is a free smart music link service that allows artists to reach their entire audience with a single link. Its smart algorithm is able to create rich landing pages that link out to over 14 music streaming platforms, in just a few seconds.
+### Songwhip
+
+An extension to expand the "share" feature by using [Songwhip](https://songwhip.com), a referral site linking to all
+found platforms.
+
+## Contributing
+
+If you spot a bug, a typo, or wish to submit your own extension, please view our [contributing
+guidelines](.github/CONTRIBUTING.md).
+
+As a general rule of thumb: If your idea implements a new feature, it is best to make it as a stand-alone extension --
+That way, the user can decide what to install and use.
+
+See also [the UNIX philosophy](https://homepage.cs.uri.edu/~thenry/resources/unix_art/ch01s06.html):
+
+> [...]
 >
-> Songwhip is used by thousands of artists across the world to get more people playing their music.
+> 1. Make each program do one thing well. To do a new job, build afresh rather than complicate old programs by adding new features.
 >
-> Songwhip was conceived and built by solo software engineer and designer Wilson Page. Wilson is working on the project full-time, relying on donations to cover his expenses and continue its development.
+> [...]
 
-## Install
+## License
 
-### Manual
-
-Copy `songwhip.js` into your Spicetify extension directory:
-
-OS      | Path
---------|---------
-Linux   | `~/.config/spicetify/Extensions/`
-OSX     | `~/spicetify_data/Extensions` or `$SPICETIFY_CONFIG/Extensions`
-Windows | `%userprofile%\.spicetify\Extensions\`
-
-Afterwards, enable and apply the extension:
-
-```shell
-$ spicetify config extensions songwhip.just
-$ spicetify apply
-```
-
-### Via [spicetify-marketplace](https://github.com/CharlieS1103/spicetify-marketplace)
-
-Just click `install` on the Spicetify-Songwhip extension.
-
-## Usage
-
-Right-click a track or artist, hit `Songwhip!`, copy the link at the top and enjoy!
-
-## Gallery
-
-![demo](songwhip-demo.png)
+All software in this repository is licensed under the terms of the BSD-3-Clause License. View the
+[LICENSE.md](LICENSE.md) file for details.
 
 ----
-Copyright (c): Luca Z., 2022.
-BSD 3-Clause License.
+Copyright (c): Luca Z, 2022. BSD-3-Clause License.
