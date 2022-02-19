@@ -23,7 +23,7 @@
 		document.body.classList.add('songwhip-css')
 	}
 
-	if (!(Spicetify.CosmosAsync && Spicetify.Player.data && Spicetify.URI)) {
+	if (!(Spicetify.PopupModal && Spicetify.CosmosAsync && Spicetify.Player.data && Spicetify.URI)) {
 		setTimeout(Songwhip, 1000)
 		return
 	}
@@ -37,18 +37,18 @@
 	}
 
 	async function getSongwhip(uris) {
-		const uri = uris[0]
-		const body = JSON.stringify({ url: uri })
+		const body = JSON.stringify({ url: uris[0] })
 
 		const data = await Spicetify.CosmosAsync.post(SW_URL, body)
 		if (!data) {
 			error()
+			return
 		}
 
-		makeModal(data)
+		displayModal(data)
 	}
 
-	function makeModal(data) {
+	function displayModal(data) {
 		const title = `<a href=${data.url}>${data.name} -- ${data.artists.map(a => a.name).join(', ')}</a>`
 		const content = `<p class="sw-par">${data.url}</p>
 		<p class="sw-par">${data.artists[0].description ?? "No description."}</p>
@@ -68,7 +68,6 @@
 		let uri = uris[0]
 		uri = Spicetify.URI.fromString(uri)
 		if (uri.type === Spicetify.URI.Type.TRACK || uri.type === Spicetify.URI.Type.ARTIST) {
-			this.name = SW_TEXT
 			return true
 		}
 
@@ -76,6 +75,6 @@
 	}
 
 	// Register the button thingy
-	const cntxMenu = new Spicetify.ContextMenu.Item(SW_TEXT, getSongwhip, shouldAddContextMenu)
-	cntxMenu.register()
+	const contextMenu = new Spicetify.ContextMenu.Item(SW_TEXT, getSongwhip, shouldAddContextMenu)
+	contextMenu.register()
 })();
