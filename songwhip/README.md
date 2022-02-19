@@ -42,7 +42,7 @@ Right-click a track or artist, hit `Songwhip!`, copy the link at the top and enj
 
 ## Gallery
 
-![demo](songwhip-demo.png)
+![demo](songwhip/songwhip-demo.png)
 
 ----
 Copyright (c): Luca Z., 2022.
