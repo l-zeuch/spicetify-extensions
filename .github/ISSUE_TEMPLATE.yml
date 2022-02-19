@@ -1,0 +1,20 @@
+name: New Issue
+description: Report a bug or make a request.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please make sure to search for [existing issues](https://github.com/l-zeuch/spicetify-songwhip/issues) before creating a new one.
+  - type: textarea
+    attributes:
+      label: Description
+      description: Describe the issue or your request in as much detail as possible.
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Existing Issues
+      description: Please confirm that you searched [existing issues](https://github.com/l-zeuch/spicetify-songwhip/issues) before opening this one.
+      options:
+        - label: I have searched existing issues.
+          required: true
