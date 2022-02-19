@@ -20,11 +20,9 @@ From <https://songwhip.com/about>:
 Copy `songwhip.js` into your Spicetify extension directory:
 
 OS      | Path
---------|---
+--------|---------
 Linux   | `~/.config/spicetify/Extensions/`
---------|---
 OSX     | `~/spicetify_data/Extensions` or `$SPICETIFY_CONFIG/Extensions`
---------|---
 Windows | `%userprofile%\.spicetify\Extensions\`
 
 Afterwards, enable and apply the extension:
