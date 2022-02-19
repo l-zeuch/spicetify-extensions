@@ -4,7 +4,7 @@ A collection of [Spicetify](https://github.com/khanhas/spicetify-cli) extensions
 
 ## Contents
 
-*This is by no means an exhaustive list, nor is it meant to be. View the individual folders for details.*
+_This is by no means an exhaustive list, nor is it meant to be. View the individual folders for details._
 
 ### Songwhip
 
@@ -32,5 +32,6 @@ See also [the UNIX philosophy](https://homepage.cs.uri.edu/~thenry/resources/uni
 All software in this repository is licensed under the terms of the BSD-3-Clause License. View the
 [LICENSE.md](LICENSE.md) file for details.
 
-----
+---
+
 Copyright (c): Luca Z, 2022. BSD-3-Clause License.

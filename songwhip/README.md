@@ -19,11 +19,11 @@ From <https://songwhip.com/about>:
 
 Copy `songwhip.js` into your Spicetify extension directory:
 
-OS      | Path
---------|---------
-Linux   | `~/.config/spicetify/Extensions/`
-OSX     | `~/spicetify_data/Extensions` or `$SPICETIFY_CONFIG/Extensions`
-Windows | `%userprofile%\.spicetify\Extensions\`
+| OS      | Path                                                            |
+| ------- | --------------------------------------------------------------- |
+| Linux   | `~/.config/spicetify/Extensions/`                               |
+| OSX     | `~/spicetify_data/Extensions` or `$SPICETIFY_CONFIG/Extensions` |
+| Windows | `%userprofile%\.spicetify\Extensions\`                          |
 
 Afterwards, enable and apply the extension:
 
@@ -44,6 +44,7 @@ Right-click a track or artist, hit `Songwhip!`, copy the link at the top and enj
 
 ![demo](https://github.com/l-zeuch/spicetify-extensions/blob/master/songwhip/songwhip-demo.png)
 
-----
+---
+
 Copyright (c): Luca Z., 2022.
 BSD 3-Clause License.

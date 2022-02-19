@@ -45,5 +45,6 @@ To do that, follow these steps:
 3. Write and commit your changes
 4. Submit a pull request to `master`
 
-----
+---
+
 Happy hacking!
