@@ -5,7 +5,6 @@
 // DESCRIPTION: Get the song/artist URL from https://songwhip.com
 // LICENSE: BSD 3-Clause License
 
-
 (function Songwhip() {
 	const SW_TEXT = "Songwhip!"
 	const SW_URL = "https://songwhip.com"
@@ -36,6 +35,11 @@
 		})
 	}
 
+	/**
+	* Fetch https://songwhip.com and call to display modal.
+	*
+	* @param {string[]} uris
+	*/
 	async function getSongwhip(uris) {
 		const body = JSON.stringify({ url: uris[0] })
 
@@ -48,6 +52,11 @@
 		displayModal(data)
 	}
 
+	/**
+	* Display a popup modal.
+	*
+	* @param {object} data
+	*/
 	function displayModal(data) {
 		const title = `<a href=${data.url}>${data.name} -- ${data.artists.map(a => a.name).join(', ')}</a>`
 		const content = `<p class="sw-par">${data.url}</p>
@@ -60,6 +69,13 @@
 		})
 	}
 
+	/**
+	*  Decide whether to add the context menu button.
+	* Only add for tracks and artists.
+	*
+	*  @param   {string[]} uris
+	*  @returns {boolean}
+	*/
 	function shouldAddContextMenu(uris) {
 		if (uris.length > 1) {
 			return false
