@@ -1,0 +1,8 @@
+# Editor specific things
+.vscode/
+.vim/
+
+# Ignore the entire submodule except the globals.d.ts
+# As that's needed for decent JS support within this project.
+spicetify-cli/*
+!spicetify-cli/globals.d.ts

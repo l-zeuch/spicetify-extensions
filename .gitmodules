@@ -1,0 +1,3 @@
+[submodule "spicetify-cli"]
+	path = spicetify-cli
+	url = git@github.com:khanhas/spicetify-cli.git
