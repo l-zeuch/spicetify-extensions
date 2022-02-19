@@ -42,7 +42,7 @@ Right-click a track or artist, hit `Songwhip!`, copy the link at the top and enj
 
 ## Gallery
 
-![demo](songwhip/songwhip-demo.png)
+![demo](https://github.com/l-zeuch/spicetify-extensions/blob/master/songwhip/songwhip-demo.png)
 
 ----
 Copyright (c): Luca Z., 2022.
