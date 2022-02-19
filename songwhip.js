@@ -3,6 +3,8 @@
 // NAME: songwhip.js
 // AUTHOR: l-zeuch
 // DESCRIPTION: Get the song/artist URL from https://songwhip.com
+// LICENSE: BSD 3-Clause License
+
 
 (function Songwhip() {
 	const SW_TEXT = "Songwhip!"
@@ -34,12 +36,6 @@
 		})
 	}
 
-
-	/**
-	* Return the found songwhip JSON stuff
-	* @param {string[]} uris
-	* @returns {string}
-	*/
 	async function getSongwhip(uris) {
 		const uri = uris[0]
 		const body = JSON.stringify({ url: uri })
@@ -52,20 +48,10 @@
 		makeModal(data)
 	}
 
-	/**
-	*  Create the popup modal
-	*  @param {string}
-	*/
 	function makeModal(data) {
-		const description = data.artists[0].description
-		if (description.length > 280) {
-			description.slice(0, 277)
-			description.concat("...")
-		}
-
 		const title = `<a href=${data.url}>${data.name} -- ${data.artists.map(a => a.name).join(', ')}</a>`
 		const content = `<p class="sw-par">${data.url}</p>
-		<p class="sw-par">${description}</p>
+		<p class="sw-par">${data.artists[0].description ?? "No description."}</p>
 		`
 
 		Spicetify.PopupModal.display({
