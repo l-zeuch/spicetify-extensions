@@ -10,6 +10,8 @@ Uses https://songwhip.com to fetch available platform links, go check them out!
 
 ## Installation
 
+This extension is also available via the [spicetify-marketplace}(https://github.com/CharlieS1103/spicetify-marketplace).
+
 1. Clone this repository
 
 ```shell
