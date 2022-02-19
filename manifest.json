@@ -1,0 +1,9 @@
+[
+	{
+		"name": "Spicetify-Songwhip",
+		"description": "A spicetify extension for better music sharing.",
+		"preview": "songwhip-demo.png",
+		"main": "songwhip.js",
+		"readme": "README.md"
+	}
+]

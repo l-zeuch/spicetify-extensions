@@ -65,13 +65,8 @@
 			return false
 		}
 
-		let uri = uris[0]
-		uri = Spicetify.URI.fromString(uri)
-		if (uri.type === Spicetify.URI.Type.TRACK || uri.type === Spicetify.URI.Type.ARTIST) {
-			return true
-		}
-
-		return false
+		const uri = Spicetify.URI.fromString(uris[0])
+		return (uri.type === Spicetify.URI.Type.TRACK || uri.type === Spicetify.URI.Type.ARTIST)
 	}
 
 	// Register the button thingy
