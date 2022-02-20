@@ -10,7 +10,7 @@
 	const SW_URL = 'https://songwhip.com';
 
 	if (!document.body.classList.contains('songwhip-css')) {
-		var styleSheet = document.createElement('style');
+		let styleSheet = document.createElement('style');
 
 		styleSheet.innerHTML = `.sw-par {
 		clear: right !important;
@@ -21,27 +21,28 @@
 		document.body.classList.add('songwhip-css');
 	}
 
-	if (!(Spicetify.PopupModal && Spicetify.CosmosAsync && Spicetify.Player.data && Spicetify.URI)) {
+	const { ContextMenu, CosmosAsync, Player, PopupModal, URI } = Spicetify;
+	if (![PopupModal, CosmosAsync, Player, URI, ContextMenu].includes(null)) {
 		setTimeout(Songwhip, 1000);
 		return;
 	}
 
 	function error() {
-		Spicetify.PopupModal.display({
+		PopupModal.display({
 			title: 'Error',
 			content: 'Failed fetching Songwhip :(',
 		});
 	}
 
 	/**
-	 * Fetch https://songwhip.com and call to display modal.
+	 * Fetch https://songwhip.com and call to display modal once resolved.
 	 *
 	 * @param {string[]} uris
 	 */
 	async function getSongwhip(uris) {
 		const body = JSON.stringify({ url: uris[0] });
 
-		const data = await Spicetify.CosmosAsync.post(SW_URL, body);
+		const data = await CosmosAsync.post(SW_URL, body);
 		if (!data) {
 			error();
 			return;
@@ -61,7 +62,7 @@
 		<p class="sw-par">${data.artists[0].description ?? 'No description.'}</p>
 		`;
 
-		Spicetify.PopupModal.display({
+		PopupModal.display({
 			title: title,
 			content: content,
 		});
@@ -69,7 +70,7 @@
 
 	/**
 	 *  Decide whether to add the context menu button.
-	 * Only add for tracks and artists.
+	 *  Only add for tracks and artists.
 	 *
 	 *  @param   {string[]} uris
 	 *  @returns {boolean}
@@ -79,11 +80,11 @@
 			return false;
 		}
 
-		const uri = Spicetify.URI.fromString(uris[0]);
-		return uri.type === Spicetify.URI.Type.TRACK || uri.type === Spicetify.URI.Type.ARTIST;
+		const uri = URI.fromString(uris[0]);
+		return uri.type === URI.Type.TRACK || uri.type === URI.Type.ARTIST;
 	}
 
 	// Register the button thingy
-	const contextMenu = new Spicetify.ContextMenu.Item(SW_TEXT, getSongwhip, shouldAddContextMenu);
+	const contextMenu = new ContextMenu.Item(SW_TEXT, getSongwhip, shouldAddContextMenu);
 	contextMenu.register();
 })();
