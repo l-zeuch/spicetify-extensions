@@ -28,7 +28,7 @@ Copy `songwhip.js` into your Spicetify extension directory:
 Afterwards, enable and apply the extension:
 
 ```shell
-$ spicetify config extensions songwhip.just
+$ spicetify config extensions songwhip.js
 $ spicetify apply
 ```
 
