@@ -22,7 +22,7 @@
 	}
 
 	const { ContextMenu, CosmosAsync, Player, PopupModal, URI } = Spicetify;
-	if (![PopupModal, CosmosAsync, Player, URI, ContextMenu].includes(null)) {
+	if (!ContextMenu || !CosmosAsync || !Player || !PopupModal || !URI) {
 		setTimeout(Songwhip, 1000);
 		return;
 	}
@@ -62,18 +62,15 @@
 		<p class="sw-par">${data.artists[0].description ?? 'No description.'}</p>
 		`;
 
-		PopupModal.display({
-			title: title,
-			content: content,
-		});
+		PopupModal.display({ title, content });
 	}
 
 	/**
-	 *  Decide whether to add the context menu button.
-	 *  Only add for tracks and artists.
+	 *	Decide whether to add the context menu button.
+	 *	Only add for tracks and artists.
 	 *
-	 *  @param   {string[]} uris
-	 *  @returns {boolean}
+	 *	@param	 {string[]} uris
+	 *	@returns {boolean}
 	 */
 	function shouldAddContextMenu(uris) {
 		if (uris.length > 1) {
