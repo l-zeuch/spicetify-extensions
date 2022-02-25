@@ -48,6 +48,7 @@
 			return;
 		}
 
+		await Spicetify.Platform.ClipboardAPI.copy(data.url);
 		displayModal(data);
 	}
 
