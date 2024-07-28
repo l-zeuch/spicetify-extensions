@@ -7,18 +7,25 @@
 
 (function Songwhip() {
 	const SW_TEXT = 'Songwhip!';
-	const SW_URL = 'https://songwhip.com';
+	const SW_BASE_URL = 'https://songwhip.com';
+	const SW_API = SW_BASE_URL + '/api';
+	const SW_CLASS = 'songwhip-css';
+	const SW_PAR_CLASS = 'sw-par';
+	const COUNTRY = 'US';
+	const ERROR_TITLE = 'Error';
+	const ERROR_CONTENT = 'Failed fetching Songwhip :(';
+	const STYLE_CONTENT = `
+		.${SW_PAR_CLASS} {
+			clear: right !important;
+			margin-bottom: 1em !important;
+		}
+	`;
 
-	if (!document.body.classList.contains('songwhip-css')) {
+	if (!document.body.classList.contains(SW_CLASS)) {
 		let styleSheet = document.createElement('style');
-
-		styleSheet.innerHTML = `.sw-par {
-		clear: right !important;
-		margin-bottom: 1em !important;
-		}`;
-
+		styleSheet.innerHTML = STYLE_CONTENT;
 		document.body.appendChild(styleSheet);
-		document.body.classList.add('songwhip-css');
+		document.body.classList.add(SW_CLASS);
 	}
 
 	const { ContextMenu, CosmosAsync, Player, PopupModal, URI } = Spicetify;
@@ -27,11 +34,8 @@
 		return;
 	}
 
-	function error() {
-		PopupModal.display({
-			title: 'Error',
-			content: 'Failed fetching Songwhip :(',
-		});
+	function displayError() {
+		PopupModal.display({ title: ERROR_TITLE, content: ERROR_CONTENT });
 	}
 
 	/**
@@ -40,15 +44,16 @@
 	 * @param {string[]} uris
 	 */
 	async function getSongwhip(uris) {
-		const body = JSON.stringify({ url: uris[0] });
+		const body = JSON.stringify({ url: uris[0], country: COUNTRY });
 
-		const data = await CosmosAsync.post(SW_URL, body);
-		if (!data) {
-			error();
+		const data = await CosmosAsync.post(SW_API, body);
+		if (!data || data.status !== 'success') {
+			displayError();
 			return;
 		}
 
-		await Spicetify.Platform.ClipboardAPI.copy(data.url);
+		const SWurl = SW_BASE_URL + data.data.item.url;
+		await Spicetify.Platform.ClipboardAPI.copy(SWurl);
 		displayModal(data);
 	}
 
@@ -58,20 +63,36 @@
 	 * @param {object} data
 	 */
 	function displayModal(data) {
-		const title = `<a href=${data.url}>${data.name} -- ${data.artists.map((a) => a.name).join(', ')}</a>`;
-		const content = `<p class="sw-par">${data.url}</p>
-		<p class="sw-par">${data.artists[0].description ?? 'No description.'}</p>
-		`;
+		const item = data.data.item;
+		const url = SW_BASE_URL + item.url;
+		let title, content;
+
+		if (item.type === 'artist') {
+			title = `<a href="${url}">${item.name}</a>`;
+			content = `
+				<p class="${SW_PAR_CLASS}">${url}</p>
+				<p class="${SW_PAR_CLASS}">${item.description ?? 'No description.'}</p>
+			`;
+		} else if (item.type === 'track') {
+			title = `<a href="${url}">${item.name} - ${item.artists.map(a => a.name).join(', ')}</a>`;
+			content = `
+				<p class="${SW_PAR_CLASS}">${url}</p>
+				<p class="${SW_PAR_CLASS}">${item.artists[0].description ?? 'No description.'}</p>
+			`;
+		} else {
+			title = ERROR_TITLE;
+			content = ERROR_CONTENT;
+		}
 
 		PopupModal.display({ title, content });
 	}
 
 	/**
-	 *	Decide whether to add the context menu button.
-	 *	Only add for tracks and artists.
+	 * Decide whether to add the context menu button.
+	 * Only add for tracks and artists.
 	 *
-	 *	@param	 {string[]} uris
-	 *	@returns {boolean}
+	 * @param {string[]} uris
+	 * @returns {boolean}
 	 */
 	function shouldAddContextMenu(uris) {
 		if (uris.length > 1) {
@@ -82,7 +103,7 @@
 		return uri.type === URI.Type.TRACK || uri.type === URI.Type.ARTIST;
 	}
 
-	// Register the button thingy
+	// Register the button
 	const contextMenu = new ContextMenu.Item(SW_TEXT, getSongwhip, shouldAddContextMenu);
 	contextMenu.register();
 })();
