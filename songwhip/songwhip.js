@@ -46,7 +46,7 @@
 	async function getSongwhip(uris) {
 		const body = JSON.stringify({ url: uris[0], country: COUNTRY });
 
-		const data = await CosmosAsync.post(SW_URL, body);
+		const data = await CosmosAsync.post(SW_API, body);
 		if (!data || data.status !== 'success') {
 			displayError();
 			return;
