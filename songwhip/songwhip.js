@@ -7,8 +7,8 @@
 
 (function Songwhip() {
 	const SW_TEXT = 'Songwhip!';
-	const SW_URL = 'https://songwhip.com/api';
 	const SW_BASE_URL = 'https://songwhip.com';
+	const SW_API = SW_BASE_URL + '/api';
 	const SW_CLASS = 'songwhip-css';
 	const SW_PAR_CLASS = 'sw-par';
 	const COUNTRY = 'US';
