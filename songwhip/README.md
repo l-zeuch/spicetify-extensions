@@ -3,6 +3,13 @@
 [Spicetify](https://github.com/khanhas/spicetify-cli) extension to extend the "share" capabilities by using
 [Songwhip](https://songwhip.com).
 
+## Notice
+
+Songwhip announced that their services will cease effective July 22, 2024. Their API continued to work for a while after
+that, however that one is as of August 26, 2024 defunct as well. This extension will no longer work.
+
+See <https://songwhip.com/faq/sunset> for more information.
+
 ## What Is Songwhip?
 
 From <https://songwhip.com/about>:
